@@ -83,7 +83,7 @@ class TaskEditor extends Component {
     completionDate: '',
     status: TASK_STATUS_PROCESSING,
     tag: '',
-    progressHidden: true,
+    isFetching: false,
     importance: '',
     importanceHidden: true
   }
@@ -144,6 +144,8 @@ class TaskEditor extends Component {
   }
 
   handleCancelClick = e => {
+    if (this.state.isFetching) return
+
     this.props.onCancel &&
     this.props.onCancel()
   }
@@ -154,12 +156,12 @@ class TaskEditor extends Component {
    */
   modelStateIsValid = () => {
     if (this.state.taskName.trim()) return true
-    else {
-      this.setState({
-        taskNameError: true
-      })
-      return false
-    }
+    
+    this.setState({
+      taskNameError: true
+    })
+
+    return false
   }
 
   handleSaveClick = e => {
@@ -175,7 +177,7 @@ class TaskEditor extends Component {
     }
 
     this.setState({
-      progressHidden: false
+      isFetching: true
     })
 
     let promise = this.props.onSave &&
@@ -185,7 +187,7 @@ class TaskEditor extends Component {
     promise
       .then(() => {
         this.setState({
-          progressHidden: true
+          isFetching: false
         })
         this._clearAllFields()
       })
@@ -245,7 +247,7 @@ class TaskEditor extends Component {
       taskDescription, 
       completionDate, 
       status,
-      progressHidden, 
+      isFetching, 
       importanceHidden, 
       importance, 
       taskNameError
@@ -320,7 +322,7 @@ class TaskEditor extends Component {
             className={classes.actionBtnContainer}
           >
             {
-              !progressHidden &&
+              isFetching &&
               <LinearProgress className={classes.progress} />
             }
             <Grid item xs={6}>
