@@ -162,7 +162,7 @@ class TaskApp extends Component {
 
   render() {
     const { classes } = this.props
-    const { taskEditorCreationOpen, tasks, snackOpen, selectedTask, taskEditorEditingOpen } = this.state
+    const { taskEditorCreationOpen, tasks, snackOpen, selectedTask, taskEditorEditingOpen, snackText } = this.state
     let columnNames = ['id', 'Статус', 'Название задачи', 'Описание задачи', 'Дата выполнения', 'Важность', 'Тэг']
     
     return (
@@ -189,7 +189,7 @@ class TaskApp extends Component {
         <Snackbar 
           open={snackOpen} 
           variant='error'
-          message='Изменения не сохранены' 
+          message={snackText} 
           onClose={this.handleSnackClose}
         />
         <Fab 
