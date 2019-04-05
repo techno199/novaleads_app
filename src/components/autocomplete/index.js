@@ -22,6 +22,9 @@ const Autocomplete = ({ onChange, classes, items, selectedItem, ...other }) => {
     if (e.target.value.trim()) {
       setMenuIsOpen(true)
     }
+    else {
+      setMenuIsOpen(false)
+    }
   }
 
   const handleSelectedValueChange = value => {
