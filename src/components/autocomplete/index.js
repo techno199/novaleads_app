@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Downshift from 'downshift'
 import { TextField, Paper, MenuItem, withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types'
@@ -9,24 +9,48 @@ const styles = theme => ({
   }
 })
 
-const Autocomplete = (props) => {
+const Autocomplete = ({ onChange, classes, items, selectedItem, ...other }) => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [text, setText] = useState('')
+
+  const handleInputChange = e => {
+    onChange &&
+      onChange(e.target.value)
+
+    setText(e.target.value)
+
+    if (e.target.value.trim()) {
+      setMenuIsOpen(true)
+    }
+  }
+
+  const handleSelectedValueChange = value => {
+    onChange &&   
+      onChange(value)
+
+    setMenuIsOpen(false)
+  }
+
   return (
     <Downshift
-      onChange={props.onChange}
+      isOpen={menuIsOpen}
+      onChange={handleSelectedValueChange}
     >
     {
       downshift => (
-        <div {...props}>
+        <div {...other}>
           <TextField 
             {...downshift.getInputProps()} 
             label='Тэг' 
-            className={props.classes.input} 
+            className={classes.input}
+            onChange={handleInputChange}
+            value={selectedItem || text}
           />
           <Paper {...downshift.getMenuProps()}>
           {
             downshift.isOpen && (
-              props.items
-                .filter(item => item.includes(downshift.inputValue) || !downshift.inputValue)
+              items
+                .filter(item => item.includes(text) )
                 .map((item, i) => (
                   <MenuItem
                     {...downshift.getItemProps({
@@ -49,7 +73,10 @@ const Autocomplete = (props) => {
 }
 
 Autocomplete.propTypes = {
-  onChange: PropTypes.func
+  classes: PropTypes.object.isRequired,
+  onChange: PropTypes.func,
+  items: PropTypes.array.isRequired,
+  selectedItem: PropTypes.string
 }
 
 const AutocompleteStyled = withStyles(styles)(Autocomplete)

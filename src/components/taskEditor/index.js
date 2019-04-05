@@ -248,7 +248,8 @@ class TaskEditor extends Component {
       isFetching, 
       importanceHidden, 
       importance, 
-      taskNameError
+      taskNameError,
+      tag
     } = this.state
 
     return (
@@ -309,7 +310,8 @@ class TaskEditor extends Component {
               <MenuItem value={TASK_STATUS_LATER}>{TASK_STATUS_LATER}</MenuItem>
               <MenuItem value={TASK_STATUS_PROCESSING}>{TASK_STATUS_PROCESSING}</MenuItem>
             </Select>
-            <Autocomplete 
+            <Autocomplete
+              selectedItem={tag}
               items={DEFAULT_TAG_VALUES}  
               className={classes.field} 
               onChange={this.handleTagChange}
