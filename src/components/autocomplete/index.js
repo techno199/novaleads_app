@@ -10,8 +10,6 @@ const styles = theme => ({
 })
 
 const Autocomplete = (props) => {
-  const [selectedTag, setSelectedTag] = useState('')
-
   return (
     <Downshift
       onChange={props.onChange}
@@ -23,8 +21,6 @@ const Autocomplete = (props) => {
             {...downshift.getInputProps()} 
             label='Тэг' 
             className={props.classes.input} 
-            // value={selectedTag}
-            // onChange={e => setSelectedTag(e.target.value)}
           />
           <Paper {...downshift.getMenuProps()}>
           {

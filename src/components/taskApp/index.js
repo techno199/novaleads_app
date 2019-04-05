@@ -3,10 +3,11 @@ import { withStyles, Grid, Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add'
 import PropTypes from 'prop-types'
 import { TaskTable } from '../taskTable';
-import { getNextId } from '../../helpers/db';
 import { TaskEditor } from '../taskEditor';
 import { Snackbar } from '../snackBar';
-import { SNACK_DELAY, createTask } from '../../helpers/const';
+import { createTask } from '../../helpers/const';
+
+const SNACK_DELAY = 1777
 
 const styles = theme => ({
   root: {
@@ -162,8 +163,24 @@ class TaskApp extends Component {
 
   render() {
     const { classes } = this.props
-    const { taskEditorCreationOpen, tasks, snackOpen, selectedTask, taskEditorEditingOpen, snackText } = this.state
-    let columnNames = ['id', 'Статус', 'Название задачи', 'Описание задачи', 'Дата выполнения', 'Важность', 'Тэг']
+    const { 
+      taskEditorCreationOpen, 
+      tasks, 
+      snackOpen, 
+      selectedTask, 
+      taskEditorEditingOpen, 
+      snackText 
+    } = this.state
+
+    let columnNames = [
+      'id', 
+      'Статус', 
+      'Название задачи', 
+      'Описание задачи', 
+      'Дата выполнения', 
+      'Важность', 
+      'Тэг'
+    ]
     
     return (
       <Grid className={classes.root}>

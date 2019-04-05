@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { withStyles, Drawer, Typography, TextField, Select, MenuItem, Grid, Button, CircularProgress, LinearProgress, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { withStyles, Drawer, Typography, TextField, Select, MenuItem, Grid, Button, LinearProgress, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import PropTypes from 'prop-types'
 import { TASK_STATUS_DONE, TASK_STATUS_LATER, TASK_STATUS_PROCESSING, DEFAULT_TAG_VALUES, TASK_IMPORTANCE_1, TASK_IMPORTANCE_3, TASK_IMPORTANCE_4, TASK_IMPORTANCE_2 } from '../../helpers/const';
 import { Autocomplete } from '../autocomplete';
-import { getNextId } from '../../helpers/db';
 
 const EDITOR_VARIANT_CREATION = 'creation'
 const EDITOR_VARIANT_EDITING = 'editing'
@@ -131,9 +130,9 @@ class TaskEditor extends Component {
   }
 
   handleDateChange = e => {
-    this.handleChange('completionDate')(e)
     this.setState({
-      importanceHidden: false
+      importanceHidden: false,
+      completionDate: e.target.value
     })
   }
 
@@ -147,7 +146,7 @@ class TaskEditor extends Component {
     if (this.state.isFetching) return
 
     this.props.onCancel &&
-    this.props.onCancel()
+      this.props.onCancel()
   }
 
   /**
@@ -181,16 +180,16 @@ class TaskEditor extends Component {
     })
 
     let promise = this.props.onSave &&
-    this.props.onSave(task)
+      this.props.onSave(task)
 
     promise &&
-    promise
-      .then(() => {
-        this.setState({
-          isFetching: false
+      promise
+        .then(() => {
+          this.setState({
+            isFetching: false
+          })
+          this._clearAllFields()
         })
-        this._clearAllFields()
-      })
   }
 
   /**
@@ -239,8 +238,7 @@ class TaskEditor extends Component {
   render() {
     const { 
       open, 
-      classes, 
-      variant
+      classes
     } = this.props
     const { 
       taskName, 

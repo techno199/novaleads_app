@@ -14,7 +14,6 @@ export const TASK_IMPORTANCE_1 = 'Срочная важная задача'
 export const TASK_IMPORTANCE_2 = 'Срочная неважная задача'
 export const TASK_IMPORTANCE_3 = 'Несрочная важная задача'
 export const TASK_IMPORTANCE_4 = 'Несрочная неважная задача'
-export const SNACK_DELAY = 1777
 
 export const createTask = (status, taskName, taskDescription, completionDate, importance, tag) => {
   return {
