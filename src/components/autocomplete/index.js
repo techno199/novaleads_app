@@ -11,13 +11,10 @@ const styles = theme => ({
 
 const Autocomplete = ({ onChange, classes, items, selectedItem, ...other }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [text, setText] = useState('')
 
   const handleInputChange = e => {
     onChange &&
       onChange(e.target.value)
-
-    setText(e.target.value)
 
     if (e.target.value.trim()) {
       setMenuIsOpen(true)
@@ -27,17 +24,23 @@ const Autocomplete = ({ onChange, classes, items, selectedItem, ...other }) => {
     }
   }
 
-  const handleSelectedValueChange = value => {
+  const handleSelect = value => {
     onChange &&   
       onChange(value)
 
     setMenuIsOpen(false)
   }
 
+  const handleKeyDown = e => {
+    if (e.keyCode === 13) {
+      setMenuIsOpen(false)
+    }
+  }
+
   return (
     <Downshift
       isOpen={menuIsOpen}
-      onChange={handleSelectedValueChange}
+      onSelect={handleSelect}
     >
     {
       downshift => (
@@ -47,13 +50,14 @@ const Autocomplete = ({ onChange, classes, items, selectedItem, ...other }) => {
             label='Тэг' 
             className={classes.input}
             onChange={handleInputChange}
-            value={selectedItem || text}
+            onKeyDown={handleKeyDown}
+            value={selectedItem}
           />
           <Paper {...downshift.getMenuProps()}>
           {
             downshift.isOpen && (
               items
-                .filter(item => item.includes(text) )
+                .filter(item => item.includes(selectedItem) )
                 .map((item, i) => (
                   <MenuItem
                     {...downshift.getItemProps({
