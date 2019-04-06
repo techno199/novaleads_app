@@ -4,11 +4,10 @@ export const TASK_STATUS_PROCESSING = 'Выполняется'
 export const TASK_STATUS_LATER = 'На потом'
 export const TASK_STATUS_DONE = 'Выполнена'
 export const DEFAULT_TAG_VALUES = [
-  'tag1',
-  'tag2',
-  'tag3',
-  'tag4',
-  'tag5'
+  'тэг0',
+  'тэг1',
+  'тэг2',
+  'тэг3'
 ]
 export const TASK_IMPORTANCE_1 = 'Срочная важная задача'
 export const TASK_IMPORTANCE_2 = 'Срочная неважная задача'
