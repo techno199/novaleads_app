@@ -37,10 +37,21 @@ const Autocomplete = ({ onChange, classes, items, selectedItem, ...other }) => {
     }
   }
 
+  /**
+   * Close suggestions on clickaway
+   * in case where's less than two suggestion
+   */
+  const handleClickAway = () => {
+    if (items.filter(i => i.includes(selectedItem)).length < 2) {
+      setMenuIsOpen(false)
+    }
+  }
+
   return (
     <Downshift
       isOpen={menuIsOpen}
       onSelect={handleSelect}
+      onOuterClick={handleClickAway}
     >
     {
       downshift => (
