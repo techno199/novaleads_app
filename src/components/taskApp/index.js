@@ -18,6 +18,9 @@ const styles = theme => ({
     height: '100%'
   },
   addBtn: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    },
     position: 'fixed',
     right: theme.spacing.unit * 4,
     bottom: theme.spacing.unit * 4
@@ -27,7 +30,18 @@ const styles = theme => ({
 class TaskApp extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    onAddClick: PropTypes.func
+    /**
+     * Fires when save task button is clicked
+     */
+    onCreateAddClick: PropTypes.func,
+    /**
+     * Defines creation editor state
+     */
+    creationEditorOpen: PropTypes.bool,
+    /**
+     * Fires when editor is closed
+     */
+    onEditorClose: PropTypes.func
   }
 
   state = {
@@ -39,9 +53,29 @@ class TaskApp extends Component {
     snackText: ''
   }
 
+  componentDidMount = () => {
+    // This place makes it possible 
+    // to have editor tab controlled from outside
+    if (this.props.creationEditorOpen) {
+      this.setState({
+        taskEditorCreationOpen: this.props.creationEditorOpen
+      })
+    }
+  }
+
+  componentWillReceiveProps = nextProps => {
+    // This place makes it possible 
+    // to have editor tab controlled from outside
+    if (nextProps.creationEditorOpen) {
+      this.setState({
+        taskEditorCreationOpen: nextProps.creationEditorOpen
+      })
+    }
+  }
+
   handleAddBtnClick = event => {
     this.onAddClick &&
-    this.onAddClick()
+      this.onAddClick()
 
     this.setState({
       taskEditorCreationOpen: true
@@ -49,6 +83,9 @@ class TaskApp extends Component {
   }
 
   handleCancel = () => {
+    this.props.onEditorClose &&
+      this.props.onEditorClose()
+
     this.setState({
       taskEditorCreationOpen: false,
       snackOpen: true
@@ -92,6 +129,9 @@ class TaskApp extends Component {
 
     await new Promise(resolve => setTimeout(resolve, 2000));
     this.setState(oldState => {
+      this.props.onCreateAddClick &&
+        this.props.onCreateAddClick(newTask)
+
       let tasks = oldState.tasks.slice();
       tasks.push(newTask);
       return {

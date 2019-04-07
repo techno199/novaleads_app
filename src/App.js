@@ -12,6 +12,7 @@ const styles = theme => ({
   appContainer: {
     paddingTop: 56,
     height: '100%',
+    overflowX: 'auto',
     [theme.breakpoints.up('sm')]: {
       paddingTop: 64
     }
@@ -19,13 +20,44 @@ const styles = theme => ({
 })
 
 class App extends Component {
+  state = {
+    creationEditorOpen: false
+  }
+
+  handleSaveClick = newTask => {
+    this.setState({
+      creationEditorOpen: false
+    })
+  }
+
+  handleEditorClose = () => {
+    this.setState({
+      creationEditorOpen: false
+    })
+  }
+
+  handleAddClick = () => {
+    this.setState({
+      creationEditorOpen: true
+    })
+  }
+
   render() {
     const { classes } = this.props
+    const { creationEditorOpen } = this.state
+
     return (
       <div className={classes.root}>
-        <AppBar title="Список задач" />
+        <AppBar 
+          title="Список задач" 
+          onAddClick={this.handleAddClick}
+        />
         <div className={classes.appContainer}>
-          <TaskApp />
+          <TaskApp 
+            creationEditorOpen={creationEditorOpen} 
+            onCreateAddClick={this.handleSaveClick} 
+            onEditorClose={this.handleEditorClose}
+          />
         </div>
       </div>
     );
