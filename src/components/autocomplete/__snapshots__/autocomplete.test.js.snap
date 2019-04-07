@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render autocomplete with suggestions 1`] = `
+<div
+  aria-expanded={true}
+  aria-haspopup="listbox"
+  aria-labelledby="downshift-1-label"
+  aria-owns="downshift-1-menu"
+  role="combobox"
+>
+  <div
+    aria-activedescendant={null}
+    aria-autocomplete="list"
+    aria-controls="downshift-1-menu"
+    aria-labelledby="downshift-1-label"
+    className="MuiFormControl-root-2 Autocomplete-input-1"
+    onKeyDown={[Function]}
+  >
+    <label
+      className="MuiFormLabel-root-17 MuiFormLabel-filled-21 MuiInputLabel-root-6 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13"
+      data-shrink={true}
+      htmlFor="downshift-1-input"
+    >
+      Тэг
+    </label>
+    <div
+      className="MuiInputBase-root-37 MuiInput-root-24 MuiInput-underline-28 MuiInputBase-formControl-38 MuiInput-formControl-25"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        autoComplete="off"
+        className="MuiInputBase-input-47 MuiInput-input-32"
+        disabled={false}
+        id="downshift-1-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+        value="тэг"
+      />
+    </div>
+  </div>
+  <div
+    aria-labelledby="downshift-1-label"
+    className="MuiPaper-root-54 MuiPaper-elevation2-58 MuiPaper-rounded-55"
+    id="downshift-1-menu"
+    role="listbox"
+  >
+    <li
+      aria-selected={false}
+      className="MuiButtonBase-root-96 MuiListItem-root-84 MuiListItem-default-87 MuiListItem-gutters-92 MuiListItem-button-93 MuiMenuItem-root-81 MuiMenuItem-gutters-82"
+      id="downshift-1-item-0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="option"
+      tabIndex={-1}
+    >
+      тэг0
+      <span
+        className="MuiTouchRipple-root-99"
+      />
+    </li>
+    <li
+      aria-selected={false}
+      className="MuiButtonBase-root-96 MuiListItem-root-84 MuiListItem-default-87 MuiListItem-gutters-92 MuiListItem-button-93 MuiMenuItem-root-81 MuiMenuItem-gutters-82"
+      id="downshift-1-item-1"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="option"
+      tabIndex={-1}
+    >
+      тэг1
+      <span
+        className="MuiTouchRipple-root-99"
+      />
+    </li>
+    <li
+      aria-selected={false}
+      className="MuiButtonBase-root-96 MuiListItem-root-84 MuiListItem-default-87 MuiListItem-gutters-92 MuiListItem-button-93 MuiMenuItem-root-81 MuiMenuItem-gutters-82"
+      id="downshift-1-item-2"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="option"
+      tabIndex={-1}
+    >
+      тэг2
+      <span
+        className="MuiTouchRipple-root-99"
+      />
+    </li>
+  </div>
+</div>
+`;
+
+exports[`should render empty autocomplete 1`] = `
+<div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-labelledby="downshift-0-label"
+  aria-owns={null}
+  role="combobox"
+>
+  <div
+    aria-activedescendant={null}
+    aria-autocomplete="list"
+    aria-controls={null}
+    aria-labelledby="downshift-0-label"
+    className="MuiFormControl-root-2 Autocomplete-input-1"
+    onKeyDown={[Function]}
+  >
+    <label
+      className="MuiFormLabel-root-17 MuiInputLabel-root-6 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
+      data-shrink={false}
+      htmlFor="downshift-0-input"
+    >
+      Тэг
+    </label>
+    <div
+      className="MuiInputBase-root-37 MuiInput-root-24 MuiInput-underline-28 MuiInputBase-formControl-38 MuiInput-formControl-25"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        autoComplete="off"
+        className="MuiInputBase-input-47 MuiInput-input-32"
+        disabled={false}
+        id="downshift-0-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    aria-labelledby="downshift-0-label"
+    className="MuiPaper-root-54 MuiPaper-elevation2-58 MuiPaper-rounded-55"
+    id="downshift-0-menu"
+    role="listbox"
+  />
+</div>
+`;

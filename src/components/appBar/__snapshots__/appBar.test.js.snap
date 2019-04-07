@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render application top bar 1`] = `
+<header
+  className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorPrimary-8 mui-fixed"
+>
+  <div
+    className="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38"
+  >
+    <h6
+      className="MuiTypography-root-41 MuiTypography-h6-58 MuiTypography-colorInherit-70"
+    >
+      title
+    </h6>
+  </div>
+</header>
+`;
